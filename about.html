@@ -97,6 +97,16 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
   
+ <script type="text/javascript">
+   var map = L.map('avengersmap').setView([51.505, -0.09], 13);
+   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'dixonel7/ck62hgzo80re41io1vknlcgyg',
+    accessToken: 'pk.eyJ1IjoiZGl4b25lbDciLCJhIjoiY2o4enpya2dvMnRlYzJxcDZjcWRwenZ1cSJ9.NqNl--HPrC6QXcClHCswfA'
+}).addTo(map);
+   
+  </script>
 
 </body>
 
