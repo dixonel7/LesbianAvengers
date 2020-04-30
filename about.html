@@ -801,7 +801,8 @@ function add1994 (feature, layer) {
   layer.bindPopup(content, {closeButton: true});
 				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
 };
-	    function add1995 (feature, layer) {
+	    
+function add1995 (feature, layer) {
   y1995.addLayer(layer)
   var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
   layer.setIcon(feature.properties.icon);
