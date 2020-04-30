@@ -702,7 +702,69 @@ var myIcon = L.icon({
 					}
 				}
 			]
-
+		var points1995 = [
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.979828, 40.75791]
+					},
+					properties: {
+						date: 'April 16, 1995',
+						description: ' Easter Parade Action. Avengers gave out eggs again and marched in the Parade.',
+						icon: myIcon
+					}
+				},
+			{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-74.0428939, 40.6986898]
+					},
+					properties: {
+						date: 'May 21, 1995',
+						description: 'Action at Ellis Island salute to Joe Bruno. Avengers showed up with a huge medal of honor at the boat. Their photo ended up in NY Post.',
+						icon: myIcon
+					}
+				},
+			{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.9854213, 40.7536005]
+					},
+					properties: {
+						date: 'June 24, 1995',
+						description: 'Snatch The Power: Third Annual NY Dyke March. Marched from Bryant Park to Washington Square Park.',
+						icon: myIcon
+					}
+				},
+			{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.9675438, 40.7828687]
+					},
+					properties: {
+						date: 'October 6, 1995',
+						description: 'Avengers made up stickers for the Popes Visit. A group of Avengers went to mass in Central Park with invites from last years sign up and stickered Portajohns. Stickers used the Stations of the Cross but created Paradies: Stations of the Labrys. Participated in coalition march on this day also. Marlene Colburn spoke at Rally.',
+						icon: myIcon
+					}
+				},
+			{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.9769657, 40.7555318]
+					},
+					properties: {
+						date: 'November 11, 1995',
+						description: 'Action at the East Side Marriott against the Christian Coalition, which was having a School Board Training. Avengers rode up to the hotel in a yellow school bus. They dressed in pleated skirts and and wore "I Aas a Lesbian Child" t-shirts. A group marched in and sang a song as they marched through the halls and out again to join others for picket for an hour. Then they gave out leaflets and pencils that said "Erase the Christian Right."',
+						icon: myIcon
+					}
+				}
+			]
+		
 var map = L.map('avengersmap').setView([40.7503941,-73.9698951], 11);
 	 
 var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -739,6 +801,13 @@ function add1994 (feature, layer) {
   layer.bindPopup(content, {closeButton: true});
 				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
 };
+	    function add1995 (feature, layer) {
+  y1995.addLayer(layer)
+  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  layer.setIcon(feature.properties.icon);
+  layer.bindPopup(content, {closeButton: true});
+				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
+};
 // create an options object that specifies which function to call on each feature
 var layer1992 = {
   onEachFeature: add1992,
@@ -752,13 +821,18 @@ var layer1994 = {
   onEachFeature: add1994,
   time: '1994'
 };
+var layer1995 = {
+  onEachFeature: add1995,
+  time: '1995'
+}
 
 // create the GeoJSON layer from myLayerData
 var full1992 = L.geoJSON(points1992, layer1992);
 var full1993 = L.geoJSON(points1993, layer1993);
 var full1994 = L.geoJSON(points1994, layer1994);
+var full1995 = L.geoJSON(points1995, layer1995);
 
-layerGroup = L.layerGroup([full1992, full1993, full1994]);
+layerGroup = L.layerGroup([full1992, full1993, full1994, full1995]);
 	    
 var sliderControl = L.control.sliderControl( {
 	layer:layerGroup,
