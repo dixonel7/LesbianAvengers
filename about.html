@@ -436,6 +436,20 @@ var myIcon = L.icon({
 					}
 				}
 			]
+			var points1994 = [
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.9794181, 40.7527302]
+					},
+					properties: {
+						date: 'February 14, 1994',
+						description: 'Valentines Day Action. The Avengers went to the Main Room of Grand Central Station during rush hour, gave out chocolate kisses, and waltzed.',
+						icon: myIcon
+					}
+				}
+			]
 
 var map = L.map('avengersmap').setView([40.7503941,-73.9698951], 11);
 	 
@@ -448,6 +462,7 @@ var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 
 var y1992 = L.layerGroup().addTo(map);
 var y1993 = L.layerGroup().addTo(map);
+var y1994 = L.layerGroup().addTo(map);
 
 function add1992 (feature, layer) {
   y1992.addLayer(layer)
@@ -464,7 +479,14 @@ function add1993 (feature, layer) {
   layer.bindPopup(content, {closeButton: true});
 				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
 };
-
+	    
+function add1994 (feature, layer) {
+  y1994.addLayer(layer)
+  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  layer.setIcon(feature.properties.icon);
+  layer.bindPopup(content, {closeButton: true});
+				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
+};
 // create an options object that specifies which function to call on each feature
 var layer1992 = {
   onEachFeature: add1992,
@@ -473,13 +495,18 @@ var layer1992 = {
 var layer1993 = {
   onEachFeature: add1993,
   time: '1993'
-}
+};
+var layer1994 = {
+  onEachFeature: add1994,
+  time: '1994'
+};
 
 // create the GeoJSON layer from myLayerData
 var full1992 = L.geoJSON(points1992, layer1992);
 var full1993 = L.geoJSON(points1993, layer1993);
+var full1994 = L.geoJSON(points1994, layer1994);
 
-layerGroup = L.layerGroup([full1992, full1993 ]);
+layerGroup = L.layerGroup([full1992, full1993, full1994]);
 	    
 var sliderControl = L.control.sliderControl( {
 	layer:layerGroup,
